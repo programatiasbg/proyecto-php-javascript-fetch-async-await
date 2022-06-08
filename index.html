@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <title>Javascript - Fetch</title>
+
+    <style>
+        body {
+            background-color: #e6dddd;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container mt-4 shadow-lg p-3 mb-5 bg-body rounded">
+        <h1> Fetch - Javascript</h1>
+        <form action="album.php" method="post">
+            <div class="table-responsive">
+
+                <table id="tabla"></table>
+
+            </div>
+            <div class="table-responsive">
+                <a type="button" href="album.php" target="" rel="noopener noreferrer" class="btn btn-primary mt-2">Todos
+                    los Albums</a>
+            </div>
+    </div>
+
+    <script>
+        let url = "https://jsonplaceholder.typicode.com/users";
+        const table = document.querySelector("#tabla");
+        fetch(url)
+            .then(response => response.json())
+            //.then(data => console.log(data))
+            .then(json => {
+                table.className = "table table-bordered table-striped ";
+                table.innerHTML = `
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nombre</th>
+                            <th>Username</th>
+                            <th>Email</th>
+                            <th>Dirección</th>
+                            <th>elefono</th>
+                            <th>Website</th>
+                            <th>Compañia</th>
+                            <th>Acción</th>
+                        </tr>
+                    </thead>
+                `;
+                let tbody = document.createElement("tbody");
+                table.appendChild(tbody);
+                json.forEach(user => {
+                    let tr = document.createElement("tr");
+                    tr.innerHTML = `
+                        <td>${user.id}</td>
+                        <td>${user.name}</td>
+                        <td>${user.username}</td>
+                        <td>${user.email}</td>
+                        <td>${user.address.street}</td>
+                        <td>${user.phone}</td>
+                        <td>${user.website}</td>
+                        <td>${user.company.name}</td>
+                        <td>
+                            <button type="submit" class="btn btn-primary">Album</button>
+                            <input type="hidden" name="usu_id" value="${user.id}">
+                        </td>
+                    `;
+                    tbody.appendChild(tr);
+                });
+                
+            });
+    </script>
+
+    <!-- Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js">
+    </script>
+</body>
+
+</html>
