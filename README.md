@@ -11,14 +11,10 @@
 ***
 Proyecto usando la tecnología Fetch de Javascript y capturando datos de {JSON} Placeholder.
 Trabajar con los verbos Http
-Fetch, es una alternativa mioderna a XMLHttpRequest
+Fetch, es una alternativa moderna a XMLHttpRequest
 
 ## {JSON} Placeholder 🃏
 [link](https://jsonplaceholder.typicode.com/)
-
-## Capturas de Imagen 🖼️
-
-![Image text](https://www....)
 
 ## Tecnologias 🛠️
 
